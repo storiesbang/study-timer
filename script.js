@@ -3,6 +3,7 @@ const startBtn = document.getElementById('start-btn');
 const pauseBtn = document.getElementById('pause-btn');
 const finishBtn = document.getElementById('finish-btn');
 const resetBtn = document.getElementById('reset-btn');
+const pipBtn = document.getElementById('pip-btn');
 const categoryNameInput = document.getElementById('category-name');
 const addCategoryBtn = document.getElementById('add-category-btn');
 const categoriesList = document.getElementById('categories');
@@ -14,6 +15,10 @@ const recordsList = document.getElementById('records-list');
 const dateFilter = document.getElementById('date-filter');
 const totalCategoryTime = document.getElementById('total-category-time');
 const totalDateTime = document.getElementById('total-date-time');
+
+const pipVideo = document.getElementById('pip-video');
+const pipCanvas = document.getElementById('pip-canvas');
+const pipCtx = pipCanvas.getContext('2d');
 
 let interval;
 let timeInSeconds;
@@ -59,6 +64,30 @@ function updateTimerDisplay() {
     const minutes = Math.floor(Math.abs(timeInSeconds) / 60);
     const seconds = Math.abs(timeInSeconds) % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    drawPipCanvas();
+}
+
+function drawPipCanvas() {
+    pipCtx.fillStyle = 'black';
+    pipCtx.fillRect(0, 0, pipCanvas.width, pipCanvas.height);
+    pipCtx.fillStyle = 'white';
+    pipCtx.font = 'bold 60px sans-serif';
+    pipCtx.textAlign = 'center';
+    pipCtx.textBaseline = 'middle';
+    pipCtx.fillText(timerDisplay.textContent, pipCanvas.width / 2, pipCanvas.height / 2);
+}
+
+async function togglePip() {
+    if (document.pictureInPictureElement) {
+        await document.exitPictureInPicture();
+    } else {
+        if (pipVideo.srcObject === null) {
+            const stream = pipCanvas.captureStream();
+            pipVideo.srcObject = stream;
+            await pipVideo.play();
+        }
+        await pipVideo.requestPictureInPicture();
+    }
 }
 
 function startTimer() {
@@ -262,6 +291,8 @@ resetBtn.addEventListener('click', () => resetTimer(false));
 addCategoryBtn.addEventListener('click', addCategory);
 countdownMode.addEventListener('change', setTimerMode);
 stopwatchMode.addEventListener('change', setTimerMode);
+pipBtn.addEventListener('click', togglePip);
+
 customTimeInput.addEventListener('change', () => {
     if (timerMode === 'countdown') {
         timeInSeconds = customTimeInput.value * 60;

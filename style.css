@@ -66,6 +66,11 @@ h1 {
     color: white;
 }
 
+#pip-btn {
+    background-color: #607d8b;
+    color: white;
+}
+
 .category-section {
     margin-top: 2rem;
 }
