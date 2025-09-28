@@ -1,6 +1,6 @@
 # Study Timer
 
-A simple and effective web-based study timer to help you focus and keep track of your study sessions.
+A simple and effective web-based study timer to help you focus and keep track of your study sessions made by Huang-Pang, Fang.
 
 ## Features
 
