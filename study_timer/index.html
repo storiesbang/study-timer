@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Study Timer</h1>
+        <div class="timer-display">25:00</div>
+        <div class="timer-controls">
+            <div class="timer-mode">
+                <input type="radio" id="countdown-mode" name="timer-mode" value="countdown" checked>
+                <label for="countdown-mode">Countdown</label>
+                <input type="radio" id="stopwatch-mode" name="timer-mode" value="stopwatch">
+                <label for="stopwatch-mode">Stopwatch</label>
+            </div>
+            <div class="custom-time">
+                <label for="custom-time-input">Set Time (minutes):</label>
+                <input type="number" id="custom-time-input" value="25" min="1">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn">Pause</button>
+            <button id="finish-btn">Finish</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+        <div class="category-section">
+            <h2>Categories</h2>
+            <div class="category-input">
+                <input type="text" id="category-name" placeholder="Enter category name">
+                <button id="add-category-btn">Add Category</button>
+            </div>
+            <div class="category-list">
+                <h3>My Categories</h3>
+                <ul id="categories">
+                </ul>
+            </div>
+            <div class="category-select">
+                <label for="category-dropdown">Select Category:</label>
+                <select id="category-dropdown">
+                </select>
+            </div>
+        </div>
+        <div id="records-section">
+            <h2>Study Records</h2>
+            <div class="records-filter">
+                <label for="date-filter">Filter by date:</label>
+                <input type="date" id="date-filter">
+            </div>
+            <div class="total-time">
+                <p>Total for category: <span id="total-category-time">0m 0s</span></p>
+                <p>Total for selected date: <span id="total-date-time">0m 0s</span></p>
+            </div>
+            <ul id="records-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
