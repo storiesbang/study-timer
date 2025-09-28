@@ -14,7 +14,7 @@ A simple and effective web-based study timer to help you focus and keep track of
 
 ## How to Use
 
-1.  Open the `index.html` file in your web browser.
+1.  Visit the website at [https://storiesbang.github.io/study-timer/](https://storiesbang.github.io/study-timer/).
 2.  Create a category for your study session.
 3.  Select the timer mode (Countdown or Stopwatch).
 4.  Set the countdown time if needed.
